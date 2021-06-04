@@ -238,7 +238,7 @@ public extension ProgressHUD {
 public class ProgressHUD: UIView {
 
 	private var viewBackground: UIView?
-	private var toolbarHUD: UIToolbar?
+	private var toolbarHUD: UIView?
 	private var labelStatus: UILabel?
 
 	private var viewProgress: ProgressView?
@@ -349,15 +349,14 @@ public class ProgressHUD: UIView {
 	private func setupToolbar() {
 
 		if (toolbarHUD == nil) {
-			toolbarHUD = UIToolbar(frame: CGRect.zero)
-			toolbarHUD?.isTranslucent = true
+            toolbarHUD = .init(frame: .zero)
 			toolbarHUD?.clipsToBounds = true
 			toolbarHUD?.layer.cornerRadius = 10
 			toolbarHUD?.layer.masksToBounds = true
 			viewBackground?.addSubview(toolbarHUD!)
 		}
 
-		toolbarHUD?.backgroundColor = colorHUD
+        toolbarHUD?.backgroundColor = .clear
 	}
 
 	//-------------------------------------------------------------------------------------------------------------------------------------------
@@ -408,7 +407,7 @@ public class ProgressHUD: UIView {
 		}
 
 		if (viewAnimation?.superview == nil) {
-			toolbarHUD?.addSubview(viewAnimation!)
+            toolbarHUD?.addSubview(viewAnimation!)
 		}
 
 		viewAnimation?.subviews.forEach {
@@ -635,7 +634,7 @@ public class ProgressHUD: UIView {
 
 		let width = view.frame.size.width
 		let height = view.frame.size.height
-
+        
 		let spacing: CGFloat = 3
 		let radius: CGFloat = (width - spacing * 2) / 3
 		let ypos: CGFloat = (height - radius) / 2
